@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" th:href="@{/styles/profile_security.css}" />
+  <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+  <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js}"></script>
+  <title>security</title>
+</head>
+<body>
+<div class="container">
+  <div class="menu">
+    <ul class="menu_items">
+      <p id="menu_title" th:text="#{menu.profile.title}"></p><hr>
+      <li class="menu_item"><a th:href="@{/profile/account}" th:text="#{menu.profile.account}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/security}" th:text="#{menu.profile.security}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/lists}" th:text="#{menu.profile.lists}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/conversations}" th:text="#{menu.profile.conversations}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/chatform}" th:text="#{menu.profile.chatform}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li><hr>
+    </ul>
+
+  </div>
+  <div class="main">
+    <form class="regform" th:method="POST" th:action="@{/profile/security/change_password}" th:object="${passwords}">
+      <div class="form-container">
+        <p style="font-size: 50px" th:text="#{security.change}"></p>
+
+        <div class="input-field">
+          <label for="old-psw" th:inline="text"><b>[[#{security.old}]]</b></label>
+          <input type="password" placeholder="oldstrongpassword" th:field="*{oldPassword}" name="old-psw" id="old-psw" required>
+        </div>
+
+        <div class="input-field">
+          <label for="new-psw" th:inline="text"><b>[[#{security.new}]]</b></label>
+          <input type="password" placeholder="newstrongpassword" th:field="*{newPassword}" name="new-psw" id="new-psw" required>
+        </div>
+
+        <div class="input-field">
+          <label for="new-psw-repeat" th:inline="text"><b>[[#{security.repeat}]]</b></label>
+          <input type="password" placeholder="samenewstrongpassword" name="psw-repeat" id="new-psw-repeat" required>
+        </div>
+
+        <p style="color:red" id="passwords-match" class="hidden" th:inline="text"><b>[[#{security.match}]]</b></p>
+        <p style="color:red" th:if="${(param.message != null) and (param.message[0] == 'error')}" th:text="#{security.wrong}"></p>
+        <p th:if="${(param.message != null) and (param.message[0] == 'success')}" th:text="#{security.success}"></p>
+
+        <button type="submit" class="change-btn" th:text="#{button.change}"></button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  function isMatching() {
+    if ($('#new-psw').val() != $('#new-psw-repeat').val())
+    {
+      console.log($('#new-psw').val());
+      console.log($('#new-psw-repeat').val());
+      $('#passwords-match').show();
+    } else {
+      $('#passwords-match').hide();
+    }
+  }
+  $('#new-psw').on('input', isMatching);
+  $('#new-psw-repeat').on('input', isMatching);
+</script>
+
+</body>
+</html>

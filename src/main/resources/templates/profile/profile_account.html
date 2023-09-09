@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" th:href="@{/styles/profile_account.css}" />
+  <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+  <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js}"></script>
+  <title>account information</title>
+</head>
+<body>
+<div class="container">
+  <div class="menu">
+    <ul class="menu_items">
+      <p id="menu_title" th:text="#{menu.profile.title}"></p><hr>
+      <li class="menu_item"><a th:href="@{/profile/account}" th:text="#{menu.profile.account}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/security}" th:text="#{menu.profile.security}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/lists}" th:text="#{menu.profile.lists}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/conversations}" th:text="#{menu.profile.conversations}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/chatform}" th:text="#{menu.profile.chatform}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li><hr>
+    </ul>
+  </div>
+
+  <div class="main">
+    <form class="regform" th:method="POST" th:action="@{/profile/account/change}" th:object="${user}">
+      <div class="form-container">
+        <p style="font-size: 50px; margin: 0;" th:text="#{account.change}"></p>
+
+        <div class="input-field">
+          <label for="username"><b>username </b><span id="username_taken" style="color:red" class="hidden" th:text="#{is_taken}"></span></label>
+          <input type="text" th:placeholder="${currentUser.username}" th:field="*{username}" name="username" id="username" autofocus>
+        </div>
+        <div class="input-field">
+          <label for="email"><b>e-mail </b><span id="email_taken" style="color:red" class="hidden" th:text="#{is_taken}"></span></label>
+          <input type="email" th:placeholder="${currentUser.email}" th:field="*{email}" name="email" id="email">
+
+        </div>
+
+        <div class="input-field">
+          <label for="first-name" th:inline="text"><b>[[#{account.first_name}]]</b></label>
+          <input type="text" th:placeholder="${currentUser.firstName}" th:field="*{firstName}" name="first-name" id="first-name">
+        </div>
+
+        <div class="input-field">
+          <label for="last-name" th:inline="text"><b>[[#{account.last_name}]]</b></label>
+          <input type="text" th:placeholder="${currentUser.lastName}" th:field="*{lastName}" name="last-name" id="last-name">
+        </div>
+
+          <span class="parameter-title" th:inline="text"><b>[[#{account.preserve}]] (<span th:text="${currentUser.preserveConversations ? '+' : '-'}"></span>)</b></span>
+        <div class="parameter" id="preserve-conversations">
+          <div class="button">
+            <input type="radio" id="not_preverve" th:field="*{preserveConversations}" name="preserveConversations" value="false"/>
+            <label class="btn btn-default" for="not_preverve" th:text="#{account.preserve.no}"></label>
+          </div>
+          <div class="button">
+            <input type="radio" id="preserve" th:field="*{preserveConversations}" name="preserveConversations" value="true"/>
+            <label class="btn btn-default" for="preserve" th:text="#{account.preserve.yes}"></label>
+          </div>
+        </div>
+
+        <div class="input-field">
+            <label for="date-of-birth" th:inline="text"><b>[[#{account.date_of_birth}]] (<span th:text="${currentUser.dateOfBirth}"></span>)</b></label>
+          <input type="date" name="date-of-birth" th:field="*{dateOfBirth}" id="date-of-birth" min="1920-01-01" max="2023-12-31">
+        </div>
+
+
+        <button id="submit-btn" type="submit" th:text="#{button.save}"></button>
+      </div>
+    </form>
+
+  </div>
+
+
+</div>
+
+
+<script th:src="@{/js/notunique.js}"></script>
+</body>
+</html>

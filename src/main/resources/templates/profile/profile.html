@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/profile.css}">
+    <title>profile</title>
+</head>
+<body>
+  <div class="container">
+    <div class="menu">
+      <ul class="menu_items">
+        <p id="menu_title" th:text="#{menu.profile.title}"></p><hr>
+        <li class="menu_item"><a th:href="@{/profile/account}" th:text="#{menu.profile.account}"></a></li><hr>
+        <li class="menu_item"><a th:href="@{/profile/security}" th:text="#{menu.profile.security}"></a></li><hr>
+        <li class="menu_item"><a th:href="@{/profile/lists}" th:text="#{menu.profile.lists}"></a></li><hr>
+        <li class="menu_item"><a th:href="@{/profile/conversations}" th:text="#{menu.profile.conversations}"></a></li><hr>
+        <li class="menu_item"><a th:href="@{/chatform}" th:text="#{menu.profile.chatform}"></a></li><hr>
+        <li class="menu_item"><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li><hr>
+      </ul>
+
+    </div>
+  </div>
+
+</body>
+</html>

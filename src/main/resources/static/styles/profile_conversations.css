@@ -1,0 +1,111 @@
+/*-------------------general-----------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600&display=swap');
+
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/background-pattern-1.jpg');
+    display: flex;
+}
+
+
+/*---------------------------menu--------------------------*/
+
+.menu {
+    padding-top: 10vh;
+    width: 20%;
+    height: 90%;
+    background: rgba(186, 59, 59, 0.7);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Tektur;
+    font-weight: 600;
+    font-size: 2vw;
+}
+
+.menu_items {
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    list-style-type: none;
+}
+
+#menu_title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #DEC6C6;
+}
+
+.menu_item {
+    padding-left: 1vw;
+}
+
+.menu_item a {
+    text-decoration: none;
+    color: #A0A0A0;
+}
+
+hr {
+    border: 3px solid black;
+}
+/*----------------main---------------------*/
+
+#main {
+    min-width: 80%;
+    height: 100%;
+    background: rgba(72, 68, 97, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+}
+
+#conversations-field {
+    overflow-y: scroll;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    width: 100%;
+    height: 100%;
+}
+
+#conversations-field p {
+    font-family: Quicksand;
+    font-size: 3vw;
+    width: 77vw;
+    min-height: 10%;
+    margin:0;
+    padding: 1vw;
+    border-bottom: 0.1vw black solid;
+    background: #67B579;
+}
+
+#conversations-field::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#conversations-field::-webkit-scrollbar {
+	width: 1vw;
+	background-color: #F5F5F5;
+}
+
+#conversations-field::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #47425C;
+}

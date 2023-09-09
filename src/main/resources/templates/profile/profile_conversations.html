@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/styles/profile_conversations.css}" />
+    <title>profile</title>
+</head>
+<body>
+    <p id="conversations" class="hidden" th:text="${conversations}"></p>
+    <div class="container">
+        <div class="menu">
+            <ul class="menu_items">
+                <p id="menu_title" th:text="#{menu.profile.title}"></p><hr>
+                <li class="menu_item"><a th:href="@{/profile/account}" th:text="#{menu.profile.account}"></a></li><hr>
+                <li class="menu_item"><a th:href="@{/profile/security}" th:text="#{menu.profile.security}"></a></li><hr>
+                <li class="menu_item"><a th:href="@{/profile/lists}" th:text="#{menu.profile.lists}"></a></li><hr>
+                <li class="menu_item"><a th:href="@{/profile/conversations}" th:text="#{menu.profile.conversations}"></a></li><hr>
+                <li class="menu_item"><a th:href="@{/chatform}" th:text="#{menu.profile.chatform}"></a></li><hr>
+                <li class="menu_item"><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li><hr>
+            </ul>
+        </div>
+
+        <div id="main">
+            <div id="conversations-field">
+
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var conversations = JSON.parse($('#conversations').html());
+        for (var c of conversations) {
+            $p = $('<p>conversation<br>id: <a href="/profile/conversations/' + c.id + '">' + c.id + '</a><br>' +
+                'date: ' + c.startDate + "</p>");
+            $p.css("background", "#E4CF47");
+            $("#conversations-field").append($p);
+            $('#conversations-field').scrollTop($("#message-field").prop('scrollHeight'));
+        }
+    </script>
+
+</body>
+</html>

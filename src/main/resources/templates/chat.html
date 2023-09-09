@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>conversation</title>
+    <link rel="stylesheet" href="../static/styles/chat.css" th:href="@{/styles/chat.css}" />
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <p id="conversation_id" class="hidden" th:text="${conversationId}"></p>
+        <p id="session_id" class="hidden" th:text="${sessionId}"></p>
+        <p id="intersected_lists_types" class="hidden" th:text="${intersectedListsTypes}"></p>
+
+        <div class="help-field">
+
+        </div>
+
+
+        <div class="chat-field">
+            <div id="message-field">
+            </div>
+            <div id="text-input">
+                <textarea id="message"></textarea>
+                <button id="send-button" type="submit" th:text="#{button.send}"></button>
+            </div>
+            <a id="disconnect" th:href="@{#}" th:text="#{button.disconnect}"></a>
+            <a id="find-next" class="hidden" th:href="@{/chatform}" th:text="#{button.find_next}"></a>
+        </div>
+
+        <div class="help-field">
+            <div class="toggle">
+                <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="help-button hidden anon-button" data-type="RANDOM TOPIC" role="button" th:text="#{button.request.random_topic}"></button>
+                <button type="button" class="help-button hidden" data-type="IMDB" role="button" th:text="#{button.request.imdb}"></button>
+                <button type="button" class="help-button hidden" data-type="YOUTUBE" role="button" th:text="#{button.request.youtube}"></button>
+                <button type="button" class="help-button hidden" data-type="KINOPOISK" role="button" th:text="#{button.request.kinopoisk}"></button>
+                <button type="button" class="help-button hidden" data-type="MYANIMELIST" role="button" th:text="#{button.request.animelist}"></button>
+                <button type="button" class="help-button hidden" data-type="LETTERBOXD" role="button" th:text="#{button.request.letterboxd}"></button>
+                <button type="button" class="help-button hidden" data-type="SHIKIMORI" role="button" th:text="#{button.request.shikimori}"></button>
+                <button type="button" class="help-button hidden" data-type="TRAKT" role="button" th:text="#{button.request.trakt}"></button>
+                <button type="button" class="help-button hidden" data-type="GOODREADS" role="button" th:text="#{button.request.goodreads}"></button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script th:src="@{/js/websocket.js}"></script>
+</body>
+</html>

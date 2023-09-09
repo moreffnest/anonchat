@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/chatform.css}">
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js}"></script>
+    <title>budai</title>
+</head>
+<body>
+
+    <div id="loader" class="hidden">
+        <svg class="ip" viewBox="0 0 256 128" width="256px" height="128px" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#5ebd3e" />
+                    <stop offset="33%" stop-color="#ffb900" />
+                    <stop offset="67%" stop-color="#f78200" />
+                    <stop offset="100%" stop-color="#e23838" />
+                </linearGradient>
+                <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+                    <stop offset="0%" stop-color="#e23838" />
+                    <stop offset="33%" stop-color="#973999" />
+                    <stop offset="67%" stop-color="#009cdf" />
+                    <stop offset="100%" stop-color="#5ebd3e" />
+                </linearGradient>
+            </defs>
+            <g fill="none" stroke-linecap="round" stroke-width="16">
+                <g class="ip__track" stroke="#ddd">
+                    <path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"/>
+                    <path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"/>
+                </g>
+                <g stroke-dasharray="180 656">
+                    <path class="ip__worm1" stroke="url(#grad1)" stroke-dashoffset="0" d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"/>
+                    <path class="ip__worm2" stroke="url(#grad2)" stroke-dashoffset="358" d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"/>
+                </g>
+            </g>
+        </svg>
+        <br>
+        <p id="users_number_info">no users are currently chatting</p>
+        <a id="cancel" th:href="@{#}" th:text="#{button.cancel}">CANCEL</a>
+    </div>
+
+    <div id="form-container">
+
+
+
+        <div class="menu">
+            <ul class="menu_items">
+                <p id="menu_title" th:text="#{menu.title}"></p><hr>
+                <div th:if="${isAuthenticated}" class="menu_item">
+                    <li><a th:href="@{/profile}" th:text="#{menu.profile}"></a></li><hr>
+                </div>
+                <div th:if="${!isAuthenticated}" class="menu_item">
+                    <li><a th:href="@{/login}" th:text="#{menu.login}"></a></li><hr>
+                </div>
+                <div th:if="${!isAuthenticated}" class="menu_item">
+                    <li><a th:href="@{/signup}" th:text="#{menu.signup}"></a></li><hr>
+                </div>
+                <div th:if="${isAuthenticated}" class="menu_item">
+                    <li><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li><hr>
+                </div>
+                <div class="menu_item">
+                    <li><a th:href="@{/chatform?lang=us}">EN</a>|<a th:href="@{/chatform?lang=ru}">RU</a>|<a th:href="@{/chatform?lang=ua}">UA</a></li><hr>
+                </div>
+            </ul>
+
+        </div>
+
+        <div class="main">
+            <form id="form" th:method="POST" th:action="@{/search}">
+                <div class="parameters">
+
+                    <div class="your-data data">
+                        <span class="parameter-header" th:text="#{chatform.your_sex}"></span>
+                        <div class="sex">
+                            <div class="button">
+                                <input type="radio" id="ys-no" name="your-sex" value="no" checked/>
+                                <label class="btn btn-default" for="ys-no" th:text="#{chatform.your_sex.no}"></label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" id="ys-man" name="your-sex" value="male" />
+                                <label class="btn btn-default" for="ys-man" th:text="#{chatform.sex.male}"></label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" id="ys-woman" name="your-sex" value="female"/>
+                                <label class="btn btn-default" for="ys-woman" th:text="#{chatform.sex.female}"></label>
+                            </div>
+                        </div>
+
+                        <span class="parameter-header" th:text="#{chatform.your_age}"></span>
+                        <div class="age-slider">
+                            <div class="value">0</div>
+                            <input id="your-age" name="your-age" type="range" min="0" max="60" step="1" value="0">
+                        </div>
+                    </div>
+
+                    <div class="interlocutor-data data">
+                        <span class="parameter-header" th:text="#{chatform.il_sex}"></span>
+                        <div class="sex">
+                            <div class="button">
+                                <input type="radio" id="is-no" name="interlocutor-sex" value="no" checked/>
+                                <label class="btn btn-default" for="is-no" th:text="#{chatform.il_sex.no}"></label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" id="is-man" name="interlocutor-sex" value="male"/>
+                                <label class="btn btn-default" for="is-man" th:text="#{chatform.sex.male}"></label>
+                            </div>
+                            <div class="button">
+                                <input type="radio" id="is-woman" name="interlocutor-sex" value="female"/>
+                                <label class="btn btn-default" for="is-woman" th:text="#{chatform.sex.female}"></label>
+                            </div>
+                        </div>
+
+                        <span class="parameter-header" th:text="#{chatform.il_age}"></span>
+
+                        <div class="age-slider">
+                            <div class="wrapper">
+                                <div class="container">
+
+                                    <div class="slider-wrapper">
+                                        <div id="slider-range"></div>
+
+                                        <div class="range-wrapper">
+                                            <div class="range"></div>
+                                            <div class="range-alert">+</div>
+
+                                            <div class="gear-wrapper">
+                                                <div class="gear-large gear-one">
+                                                    <div class="gear-tooth"></div>
+                                                    <div class="gear-tooth"></div>
+                                                    <div class="gear-tooth"></div>
+                                                    <div class="gear-tooth"></div>
+                                                </div>
+                                                <div class="gear-large gear-two">
+                                                    <div class="gear-tooth"></div>
+                                                    <div class="gear-tooth"></div>
+                                                    <div class="gear-tooth"></div>
+                                                    <div class="gear-tooth"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="marker marker-0">0</div>
+                                        <div class="marker marker-25">15</div>
+                                        <div class="marker marker-50">30</div>
+                                        <div class="marker marker-75">45</div>
+                                        <div class="marker marker-100">60+</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" id="search-button" name="submit-button" th:text="#{button.search}">search</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <script type="text/javascript" th:src="@{/js/chatform.js}"></script>
+</body>
+</html>

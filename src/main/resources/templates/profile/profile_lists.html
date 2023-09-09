@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles/profile_lists.css}">
+  <title>lists</title>
+</head>
+<body>
+<div class="container">
+  <div class="menu">
+    <ul class="menu_items">
+      <p id="menu_title" th:text="#{menu.profile.title}"></p><hr>
+      <li class="menu_item"><a th:href="@{/profile/account}" th:text="#{menu.profile.account}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/security}" th:text="#{menu.profile.security}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/lists}" th:text="#{menu.profile.lists}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/profile/conversations}" th:text="#{menu.profile.conversations}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/chatform}" th:text="#{menu.profile.chatform}"></a></li><hr>
+      <li class="menu_item"><a th:href="@{/logout}" th:text="#{menu.logout}"></a></li><hr>
+    </ul>
+
+  </div>
+
+  <div class="main">
+    <form class="regform" th:method="POST" enctype="multipart/form-data" th:action="@{/profile/lists/upload}">
+      <div class="form-container">
+        <p id="title" th:text="#{lists.upload}"></p>
+
+        <div class="input-field">
+          <label for="yt-list"><b>youtube</b></label>
+          <input type="file" accept=".html" name="yt-list" id="yt-list">
+        </div>
+
+        <div class="input-field">
+          <label for="list_type" th:inline="text"><b>[[#{lists.title_lists}]]</b></label>
+          <select name="list-type" id="list_type">
+            <option value="IMDB">IMDB</option>
+            <option value="KINOPOISK">Кинопоиск</option>
+            <option value="MYANIMELIST">MyAnimeList</option>
+            <option value="LETTERBOXD">Letterboxd</option>
+            <option value="SHIKIMORI">Shikimori</option>
+            <option value="TRAKT">Trakt</option>
+            <option value="GOODREADS">Goodreads</option>
+          </select>
+          <input type="text" placeholder="https://imdb.com/list/ls823502/" name="list-link" id="list-link">
+        </div>
+
+        <p th:if="${(param.message != null) and (param.message[0] == 'success')}" th:text="success"></p>
+
+        <button type="submit" class="send-btn" th:text="#{button.upload}"></button>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+</body>
+</html>

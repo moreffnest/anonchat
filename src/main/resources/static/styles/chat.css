@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:700&family=Quicksand&family=Tektur&display=swap');
+
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/background-pattern-1.jpg');
+    display: flex;
+    align-items: center;
+}
+
+.chat-field {
+    min-width: 60%;
+    height: 100%;
+    background: rgba(72, 68, 97, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#message-field {
+    overflow-y: scroll;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    width: 70%;
+    height: 85%;
+    max-height: 85%;
+}
+
+#message-field p {
+    font-family: Quicksand;
+    font-size: 1.7vw;
+    min-height: 10%;
+    margin:0;
+    padding: 1vw;
+    border-bottom: 0.1vw black solid;
+    background: #ff8080;
+}
+
+#message-field::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+#message-field::-webkit-scrollbar {
+	width: 1vw;
+	background-color: #F5F5F5;
+}
+
+#message-field::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #47425C;
+}
+
+
+#text-input {
+    width: 70%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    color: #ff8080;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+}
+
+/*----------------help-field----------------------*/
+
+.help-field {
+    min-width: 20%;
+    min-height: 100%;
+    background: rgba(3 0 49 / 70%);
+    align-self: end;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/*--------------------toggle---------------------*/
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 8vw;
+	height: 4vw;
+	background: grey;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 0.5vw;
+	left: 0.5vw;
+	width: 3vw;
+	height: 3vw;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: #703F7F;
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 3.5vw;
+}
+
+.toggle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 2vw;
+	margin-bottom: 2vw;
+}
+/*-------------buttons---------------------*/
+
+/* CSS */
+.help-button {
+  appearance: none;
+  background-color: #000000;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Tektur;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 20vw;
+  will-change: transform;
+}
+
+.help-button:disabled {
+  pointer-events: none;
+}
+
+.help-button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.help-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}

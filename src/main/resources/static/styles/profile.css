@@ -1,0 +1,64 @@
+/*-------------------general-----------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600&display=swap');
+
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/background-pattern-1.jpg');
+    display: flex;
+}
+
+
+/*---------------------------menu--------------------------*/
+
+.menu {
+    padding-top: 10vh;
+    width: 20%;
+    height: 90%;
+    background: rgba(186, 59, 59, 0.7);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Tektur;
+    font-weight: 600;
+    font-size: 2vw;
+}
+
+.menu_items {
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    list-style-type: none;
+}
+
+#menu_title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #DEC6C6;
+}
+
+.menu_item {
+    padding-left: 1vw;
+}
+
+.menu_item a {
+    text-decoration: none;
+    color: #A0A0A0;
+}
+
+hr {
+    border: 3px solid black;
+}

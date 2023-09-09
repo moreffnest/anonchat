@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Lumanosimo&family=Tektur&display=swap');
+
+
+* {box-sizing: border-box}
+
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    align-content: center;
+    text-align: center;
+    background: url("../images/background-pattern-1.jpg");
+}
+
+.container {
+    font-size: 30px;
+    color: #6c25be;
+    font-family: Tektur;
+    font-weight: 700;
+    text-shadow: 0 0 20px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.useful-links {
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #6c25be;
+}
+
+.useful-links a:hover {
+    color: white;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    opacity: 50%;
+    width: 30vw;
+    height: 5vh;
+    border-radius: 25px;
+    font-size: 25px;
+    text-align: center;
+    font-family: Tektur;
+}
+
+input:hover {
+    opacity: 100%;
+}
+
+#submit-btn {
+    opacity: 50%;
+    margin-top: 3vh;
+    border-radius: 50px;
+    width: 9vw;
+    height: 7vh;
+    font-family: Tektur;
+    font-size: 1.6vw;
+}
+
+#submit-btn:hover {
+    opacity: 100%;
+}

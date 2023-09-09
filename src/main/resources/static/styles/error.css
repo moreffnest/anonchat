@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600&display=swap');
+
+
+html {
+   box-sizing: border-box;
+}
+
+*, *:before, *:after {
+   box-sizing: inherit;
+}
+
+body {
+    background: url("../images/background-pattern-1.jpg");
+    position: absolute;
+    width: 100%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 3vw;
+    font-family: Tektur;
+    items-align: center;
+}
+
+.container {
+    background: rgba(72, 68, 97, 0.7);
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+}
+
+.container a {
+    color: #ff8080;
+    text-decoration: none;
+}
+
+.container a:hover {
+    color: #ff3333;
+}
+
+}

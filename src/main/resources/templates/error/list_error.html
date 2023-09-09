@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/styles/error.css}">
+  <title>error</title>
+</head>
+<body>
+<div class="container">
+    <span>your input was incorrect<br>if you want to upload your YouTube history, download it in html format
+        <a th:href="@{https://google.com/takeout}" target=”_blank”>here</a><br>
+        if you want to upload some other list, make sure you have chosen correct list type and your link
+        leads to the list page<br>
+        <a th:href="@{/profile/lists}">try again</a>
+    </span>
+</div>
+</body>
+</html>

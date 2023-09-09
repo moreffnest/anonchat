@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>budai</title>
+    <link rel="stylesheet" th:href="@{/styles/login.css}">
+</head>
+<body>
+    <form th:method="POST" th:action="@{/perform-login}">
+        <div class="container">
+            <div class="input-field">
+                <label>username</label>
+                <input type="text" name="username" placeholder="username/e-mail" required autofocus>
+            </div>
+
+            <div class="input-field">
+                <label>password</label>
+                <input type="password" name="password" placeholder="password" required>
+            </div>
+
+            <div class="useful-links">
+<!--                <a th:href="@{/recovery}">forgot password</a>-->
+                <a th:href="@{/signup}">sign up</a>
+                <a th:href="@{/chatform}">chat</a>
+            </div>
+
+            <div th:if="${param.error}" class="alert alert-error">
+                Invalid username or password.
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success">
+                You have been logged out.
+            </div>
+
+            <button type="submit" name="">LOG IN</button>
+        </div>
+    </form>
+</body>
+</html>

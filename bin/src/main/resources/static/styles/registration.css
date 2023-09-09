@@ -1,0 +1,108 @@
+* {box-sizing: border-box}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+    border: solid black 3px;
+}
+
+
+body {
+    font-family: Tektur;
+    font-size: 1vw;
+}
+
+h1, p {
+    text-align: center;
+}
+
+body {
+    background-image: url("../images/background-pattern-5.jpg");
+    background-repeat: repeat;
+    align-content: center;
+    text-align: center;
+}
+
+.regform {
+    background-color: white;
+}
+
+input {
+    width: 40%;
+    font-size: 1vw;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Overwrite default styles of hr */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* Set a style for the submit/register button */
+.registerbtn {
+    background-color: #04AA6D;
+    font-size:1vw;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.registerbtn:hover {
+    opacity:1;
+}
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+    text-decoration: none;
+}
+
+a:active {
+    color: blueviolet;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+    text-align: center;
+}
+
+
+
+/*scrollbar view*/
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

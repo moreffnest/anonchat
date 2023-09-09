@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/error.css}">
+    <title>budai</title>
+</head>
+<body>
+<div class="container">
+    <span>[[#{error}]]<br>
+        <span th:text="#{start.message1}"/> <a th:href="@{/signup}">[[#{start.signup}]]</a>
+        <span th:text="#{start.message2}"/> <a th:href="@{/login}">[[#{menu.login}]]</a>
+        <span th:text="#{start.message3}"/>
+    </span><br>
+    <span><span th:text="#{start.message4}" /> <a th:href="@{/chatform}">[[#{start.chat}]]</a></span>
+</div>
+</body>
+</html>

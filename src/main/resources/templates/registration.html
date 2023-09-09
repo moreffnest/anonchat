@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>budai</title>
+    <link rel="stylesheet" th:href="@{/styles/registration.css}">
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js}"></script>
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js}"></script>
+</head>
+<body>
+<form class="regform" th:method="POST" th:action="@{/registration}" th:object="${user}">
+    <div class="container">
+        <p style="font-size: 50px">create new account</p>
+
+        <div class="input-field">
+            <label for="email"><b>e-mail</b><span id="email_taken" style="color:red" class="hidden"> is taken</span></label>
+            <input type="email" placeholder="example@gmail.com" th:field="*{email}" name="email" id="email" required autofocus>
+        </div>
+
+        <div class="input-field">
+            <label for="username"><b>username</b><span id="username_taken" style="color:red" class="hidden"> is taken</span></label>
+            <input type="text" placeholder="unique_username" th:field="*{username}" name="username" id="username" required>
+        </div>
+
+        <div class="input-field">
+            <label for="psw"><b>password</b></label>
+            <input type="password" placeholder="strongpasswordhere" th:field="*{password}" name="psw" id="psw" required>
+        </div>
+
+        <div class="input-field">
+            <label for="psw-repeat"><b>repeat password</b></label>
+            <input type="password" placeholder="samestrongpassword" name="psw-repeat" id="psw-repeat" required>
+        </div>
+
+
+        <div class="useful-links">
+            <a href="#">terms & privacy</a>
+            <a th:href="@{/login}">log in</a>
+            <a th:href="@{/chatform}">chat</a>
+        </div>
+        <button id="submit-btn" type="submit" >REGISTER</button>
+    </div>
+</form>
+
+<script th:src="@{/js/notunique.js}"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/*-------------------general-----------------------*/
+@import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400;500;600;700&display=swap');
+
+.hidden {
+    display: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: url('../images/background-pattern-1.jpg');
+    display: flex;
+}
+
+
+/*---------------------------menu--------------------------*/
+
+.menu {
+    padding-top: 10vh;
+    width: 20%;
+    height: 90%;
+    background: rgba(186, 59, 59, 0.7);
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Tektur;
+    font-weight: 600;
+    font-size: 2vw;
+}
+
+.menu_items {
+    margin: 0;
+    padding: 0;
+    align-self: center;
+    list-style-type: none;
+}
+
+#menu_title {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #DEC6C6;
+}
+
+.menu_item {
+    padding-left: 1vw;
+}
+
+.menu_item a {
+    text-decoration: none;
+    color: #A0A0A0;
+}
+
+hr {
+    border: 3px solid black;
+}
+
+/*-----------------------main-----------------------------*/
+
+.main {
+    width: 80%;
+    height: 100%;
+    text-align: center;
+}
+
+.form-container {
+    font-size: 30px;
+    color: #6c25be;
+    font-family: Tektur;
+    font-weight: 700;
+    text-shadow: 0 0 20px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    opacity: 50%;
+    width: 35vw;
+    height: 5vh;
+    border-radius: 25px;
+    font-size: 25px;
+    text-align: center;
+    font-family: Tektur;
+}
+
+input:hover {
+    opacity: 100%;
+}
+
+#submit-btn  {
+    opacity: 50%;
+    margin-top: 2vh;
+    border-radius: 50px;
+    height: 7vh;
+    font-family: Tektur;
+    font-size: 1.6vw;
+}
+
+#submit-btn:hover {
+    opacity: 100%;
+}
+
+#preserve-conversations {
+    display: flex;
+    flex-direction:
+    justify-content: space-around;
+}
+
+
+
+
+/*----------------preserve conversations------------------ */
+
+.button {
+  float: left;
+  margin: 0 5px 0 0;
+  width: 8vw;
+  height: 4vw;
+  position: relative;
+  text-align: center;
+}
+
+.button label,
+.button input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.button input[type="radio"] {
+  opacity: 0.011;
+  z-index: 100;
+}
+
+.button input[type="radio"]:checked + label {
+  background: #ff8080;
+  border-radius: 4px;
+}
+
+.button label {
+  cursor: pointer;
+  z-index: 90;
+  line-height: 1.8em;
+}
